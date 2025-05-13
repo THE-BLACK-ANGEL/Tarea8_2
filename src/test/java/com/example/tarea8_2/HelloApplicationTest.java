@@ -15,6 +15,6 @@ public class HelloApplicationTest extends ApplicationTest {
     public void shouldFindCompanyWhenSearchingWithYour() {
         // Simula la entrada de texto en el campo de búsqueda
         clickOn("#tfNombre").write("Your");
-        sleep(10000);
+        sleep(5000);
     }
 }
