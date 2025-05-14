@@ -52,6 +52,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
+            <Button fx:id="btnBorrar" layoutX="300.0" layoutY="46.0" mnemonicParsing="false" text="Borrar txt" />
             </children>
         </AnchorPane>
         <TableView fx:id="tvDatos" prefHeight="242.0" prefWidth="600.0" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="2">

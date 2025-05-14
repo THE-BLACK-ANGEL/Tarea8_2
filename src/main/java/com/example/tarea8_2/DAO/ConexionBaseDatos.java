@@ -10,7 +10,7 @@ public class ConexionBaseDatos {
     //Metodo para obtener los datos de la conexion
     public static Connection getConnection() {
 
-        String dbName = "Angel";
+        String dbName = "Ecommerce";
         String dbPort = "5432";
         String dbUser  = "odoo";
         String dbPass = "odoo";

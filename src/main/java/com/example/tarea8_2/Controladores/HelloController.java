@@ -17,6 +17,8 @@ import java.util.Optional;
 public class HelloController {
 
     @FXML
+    private Button btnBorrar;
+    @FXML
     private TableColumn<Company, String> tcName;
     @FXML
     private TableColumn<Company, Integer> tcID;
@@ -42,7 +44,7 @@ public class HelloController {
         tcPropietario.setCellValueFactory(new PropertyValueFactory<>("partner_id"));
         tcMoneda.setCellValueFactory(new PropertyValueFactory<>("currency_id"));
         //CARGAR DATOS DESDE EL INICIO DEL PROGRAMA DE LA BASE DE DATOS
-
+        btnBorrar.setOnAction(e -> tfNombre.setText(""));
         List<Company> companies = CompanyDAO.buscarCompaniesNombre("");
         datos = FXCollections.observableList(CompanyDAO.buscarCompaniesNombre(""));
         tvDatos.setItems(datos);
