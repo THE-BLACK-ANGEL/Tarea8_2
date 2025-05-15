@@ -76,7 +76,6 @@ public class HelloApplicationTest extends ApplicationTest {
         robot.clickOn("Aceptar");
 
         WaitForAsyncUtils.waitForFxEvents();
-
         TableView tableView = lookup("#tvDatos").query();
         Platform.runLater(() -> tableView.getSelectionModel().selectFirst());
         WaitForAsyncUtils.waitForFxEvents();
