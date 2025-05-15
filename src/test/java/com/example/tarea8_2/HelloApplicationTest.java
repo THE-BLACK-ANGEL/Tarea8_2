@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.robot.Robot;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,10 +11,6 @@ import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.util.WaitForAsyncUtils;
-
-import java.util.Collection;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class HelloApplicationTest extends ApplicationTest {
 
@@ -28,35 +23,12 @@ public class HelloApplicationTest extends ApplicationTest {
     void setUp() throws Exception {
         FxToolkit.registerPrimaryStage();
     }
-/*
+
     @Test
-    void testAddCompany() {
+    void testAñadirEdicionEliminacionCompany() {
         FxRobot robot = new FxRobot();
 
-        robot.clickOn("#tfNombre").write("Compañía Test");
-        robot.clickOn("#btAnadir");
-
-        robot.lookup(".dialog-pane");
-        robot.clickOn(".text-field").write("234");
-        robot.clickOn("Aceptar");
-
-        WaitForAsyncUtils.waitForFxEvents();
-        WaitForAsyncUtils.waitForFxEvents();
-
-        Node secondDialogPane = robot.lookup(".dialog-pane").query();
-        TextField secondTextField = robot.from(secondDialogPane).lookup(".text-field").query();
-
-        robot.clickOn(secondTextField).write("345");
-
-        robot.clickOn("Aceptar");
-
-    }
-
- */
-    @Test
-    void testEditCompany() {
-        FxRobot robot = new FxRobot();
-
+        //Añadir
         robot.clickOn("#tfNombre").write("Compañía Editar");
         robot.clickOn("#btAnadir");
 
@@ -66,15 +38,13 @@ public class HelloApplicationTest extends ApplicationTest {
 
         WaitForAsyncUtils.waitForFxEvents();
 
-        WaitForAsyncUtils.waitForFxEvents();
-
         Node secondDialogPane = robot.lookup(".dialog-pane").query();
         TextField secondTextField = robot.from(secondDialogPane).lookup(".text-field").query();
 
         robot.clickOn(secondTextField).write("346");
-
         robot.clickOn("Aceptar");
 
+        //Edicion
         WaitForAsyncUtils.waitForFxEvents();
         TableView tableView = lookup("#tvDatos").query();
         Platform.runLater(() -> tableView.getSelectionModel().selectFirst());
@@ -102,9 +72,25 @@ public class HelloApplicationTest extends ApplicationTest {
 
         WaitForAsyncUtils.waitForFxEvents();
         robot.clickOn("#btnBorrar").clickOn("#tfNombre").write("Compañia Editada");
-        robot.sleep(5000);
+
+        //Eliminacion
+        WaitForAsyncUtils.waitForFxEvents();
+        TableView tableView2 = lookup("#tvDatos").query();
+        Platform.runLater(() -> tableView2.getSelectionModel().selectFirst());
+        WaitForAsyncUtils.waitForFxEvents();
+
+        robot.clickOn("#btnEliminar");
+        robot.lookup(".dialog-pane");
+        robot.clickOn("Aceptar");
+
+        robot.lookup(".dialog-pane").query();
+        robot.clickOn("Aceptar");
+
+
 
     }
+
+
 
 
 
